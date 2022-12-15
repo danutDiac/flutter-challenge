@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/src/theme/themeManager.dart';
 
-import 'package:flutter_challenge/src/theme/palette.dart';
-import 'src/theme/colorCodes.dart' as color_constants;
 import 'src/widgets/header.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider<ThemeManager>(
+    create: (_) => new ThemeManager(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,42 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Challenge',
-      theme: ThemeData(
-          primarySwatch: Palette.kToDark,
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: color_constants.primaryColor,
-            secondary: color_constants.secondaryColor,
-            tertiary: color_constants.tertiaryColor,
-          ),
-          scaffoldBackgroundColor: const Color(0xffF2F2F2),
-          fontFamily: 'SpaceMono',
-          textTheme: const TextTheme(
-            headline1: TextStyle(
-                fontSize: 26.0,
-                fontWeight: FontWeight.bold,
-                color: color_constants.neutral01Color),
-            headline2: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-                color: color_constants.neutral01Color),
-            headline3: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.normal,
-                color: color_constants.primaryColor),
-            headline4: TextStyle(
-                fontSize: 13.0,
-                fontWeight: FontWeight.normal,
-                color: color_constants.tertiaryColor),
-            bodyText1: TextStyle(
-              fontSize: 15.0,
-              fontWeight: FontWeight.normal,
-              color: color_constants.neutral01Color,
-            ),
-          )),
-      home: const MyHomePage(),
-    );
+    final theme = ThemeManager();
+
+    return Consumer<ThemeManager>(builder: (context, theme, child) {
+      return MaterialApp(
+        title: 'Flutter Challenge',
+        theme: theme.getTheme(),
+        home: const MyHomePage(),
+      );
+    });
   }
 }
 
@@ -77,9 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: const [Header()],
-      )),
+          child: Column(children: [
+        Container(
+            child: const Header(),
+            decoration: BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+            )),
+      ])),
     );
   }
 }
