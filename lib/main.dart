@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/palette.dart';
 
-import 'colorCodes.dart' as color_constants;
+import 'package:flutter_challenge/src/theme/palette.dart';
+import 'src/theme/colorCodes.dart' as color_constants;
 
 void main() {
   runApp(const MyApp());
@@ -42,9 +42,10 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   color: color_constants.tertiaryColor),
               bodyText1: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.normal,
-                  color: color_constants.neutral01Color))),
+                fontSize: 15.0,
+                fontWeight: FontWeight.normal,
+                color: color_constants.neutral01Color,
+              ))),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
