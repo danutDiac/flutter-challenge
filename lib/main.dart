@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/palette.dart';
+
+import 'colorCodes.dart' as color_constants;
 
 void main() {
   runApp(const MyApp());
@@ -13,17 +16,35 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Palette.kToDark,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: color_constants.primaryColor,
+            secondary: color_constants.secondaryColor,
+            tertiary: color_constants.tertiaryColor,
+          ),
+          scaffoldBackgroundColor: const Color(0xffF2F2F2),
           fontFamily: 'SpaceMono',
           textTheme: const TextTheme(
-              headline1: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
-              headline2: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-              headline3:
-                  TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal),
-              headline4:
-                  TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal),
-              bodyText1:
-                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal))),
+              headline1: TextStyle(
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                  color: color_constants.neutral01Color),
+              headline2: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  color: color_constants.neutral01Color),
+              headline3: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.normal,
+                  color: color_constants.primaryColor),
+              headline4: TextStyle(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.normal,
+                  color: color_constants.tertiaryColor),
+              bodyText1: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.normal,
+                  color: color_constants.neutral01Color))),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
