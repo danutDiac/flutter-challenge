@@ -13,9 +13,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'SpaceMono',
-      ),
+          primarySwatch: Colors.blue,
+          fontFamily: 'SpaceMono',
+          textTheme: const TextTheme(
+              headline1: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+              headline2: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
+              headline3:
+                  TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal),
+              headline4:
+                  TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal),
+              bodyText1:
+                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal))),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -87,12 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'You have pushed the button this many times:',
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline2,
             ),
           ],
         ),
