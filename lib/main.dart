@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/theme/themeManager.dart';
 
-import 'src/widgets/header.dart';
+import 'src/widgets/Header/header.dart';
 import 'package:provider/provider.dart';
 
 void main() {
