@@ -16,8 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeManager();
-
     return Consumer<ThemeManager>(builder: (context, theme, child) {
       return MaterialApp(
         title: 'Flutter Challenge',
