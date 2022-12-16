@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider<ThemeManager>(
-    create: (_) => new ThemeManager(),
+    create: (_) => ThemeManager(),
     child: const MyApp(),
   ));
 }
