@@ -16,31 +16,29 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeManager>(builder: (context, theme, child) {
-      return Row(
-        children: [
-          Container(
-              margin: const EdgeInsets.only(
-                right: 16,
-              ),
-              child: const Text('DARK',
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: color_constants.tertiaryColor,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.5))),
-          TextButton(
-              onPressed:
-                  theme.isDark() ? theme.setLightMode : theme.setDarkMode,
-              child: Transform.rotate(
-                angle: 150,
-                child: const Icon(
-                  Icons.nightlight,
-                  color: color_constants.tertiaryColor,
-                  size: 20,
-                ),
-              ))
-        ],
-      );
+      return TextButton(
+          onPressed: theme.isDark() ? theme.setLightMode : theme.setDarkMode,
+          child: Row(
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(
+                    right: 16,
+                  ),
+                  child: const Text('DARK',
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: color_constants.tertiaryColor,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.5))),
+              Transform.rotate(
+                  angle: 150,
+                  child: const Icon(
+                    Icons.nightlight,
+                    color: color_constants.tertiaryColor,
+                    size: 20,
+                  )),
+            ],
+          ));
     });
   }
 }
