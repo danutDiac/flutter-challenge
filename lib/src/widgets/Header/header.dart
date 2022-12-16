@@ -18,7 +18,7 @@ class Header extends StatelessWidget {
                   .headline1
                   ?.apply(color: color_constants.neutral02Color)),
           const Spacer(),
-          ThemeSwitcher()
+          const ThemeSwitcher()
         ],
       ),
     );
