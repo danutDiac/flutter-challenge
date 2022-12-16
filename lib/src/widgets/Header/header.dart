@@ -12,11 +12,7 @@ class Header extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Row(
         children: [
-          Text('devfinder',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline1
-                  ?.apply(color: color_constants.neutral02Color)),
+          Text('devfinder', style: Theme.of(context).textTheme.headlineLarge),
           const Spacer(),
           const ThemeSwitcher()
         ],
