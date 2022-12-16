@@ -13,7 +13,8 @@ class UserDetailsState extends State<UserDetails> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(24)),
+            color: Theme.of(context).scaffoldBackgroundColor,
+            borderRadius: BorderRadius.circular(24)),
         child: Column(
           children: [
             Row(
@@ -29,7 +30,8 @@ class UserDetailsState extends State<UserDetails> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('datTa'),
+                    Text('datTa',
+                        style: Theme.of(context).textTheme.displayLarge),
                     Text('datqwdqwda'),
                     Text('dfhwieufh')
                   ],

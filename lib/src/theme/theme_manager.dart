@@ -8,14 +8,12 @@ class ThemeManager with ChangeNotifier {
       secondary: color_constants.secondaryColor,
       tertiary: color_constants.tertiaryColor,
     ),
-    scaffoldBackgroundColor: const Color(0xffF2F2F2),
+    scaffoldBackgroundColor: color_constants.neutral03Color,
     fontFamily: 'SpaceMono',
     backgroundColor: color_constants.darkGrey,
     textTheme: const TextTheme(
       headline1: TextStyle(
-          fontSize: 26.0,
-          fontWeight: FontWeight.bold,
-          color: color_constants.neutral01Color),
+          fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
       headline2: TextStyle(
           fontSize: 22.0,
           fontWeight: FontWeight.bold,
@@ -47,12 +45,12 @@ class ThemeManager with ChangeNotifier {
         secondary: color_constants.secondaryColor,
         tertiary: color_constants.tertiaryColor,
       ),
-      scaffoldBackgroundColor: const Color(0xffF2F2F2),
+      scaffoldBackgroundColor: Colors.white,
       fontFamily: 'SpaceMono',
       backgroundColor: color_constants.lightGrey,
       textTheme: const TextTheme(
         headline1: TextStyle(
-            fontSize: 26.0,
+            fontSize: 16.0,
             fontWeight: FontWeight.bold,
             color: color_constants.neutral01Color),
         headline2: TextStyle(
