@@ -51,24 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).backgroundColor,
+        ),
+        child: SafeArea(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: const [
+              Header(),
+            ],
           ),
-          child: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
-                    ),
-                    child: const Header(),
-                  ),
-                ),
-              ],
-            ),
-          )),
+        )),
+      ),
     );
   }
 }
