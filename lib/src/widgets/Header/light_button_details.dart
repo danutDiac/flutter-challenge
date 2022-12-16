@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/colorCodes.dart' as color_constants;
+import '../../theme/color_codes.dart' as color_constants;
 
 class LightThemeButtonDetails extends StatefulWidget {
   const LightThemeButtonDetails({super.key});

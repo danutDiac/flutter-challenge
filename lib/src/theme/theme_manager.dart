@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './colorCodes.dart' as color_constants;
+import 'color_codes.dart' as color_constants;
 
 class ThemeManager with ChangeNotifier {
   final darkTheme = ThemeData(

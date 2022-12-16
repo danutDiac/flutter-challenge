@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/src/widgets/Header/themeSwitcher.dart';
+import 'package:flutter_challenge/src/widgets/Header/theme_switcher.dart';
 
-import '../../theme/colorCodes.dart' as color_constants;
+import '../../theme/color_codes.dart' as color_constants;
 
 class Header extends StatelessWidget {
   const Header({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/src/theme/themeManager.dart';
+import 'package:flutter_challenge/src/theme/theme_manager.dart';
 import 'package:flutter_challenge/src/widgets/SearchBar/searchBar.dart';
 
 import 'src/widgets/Header/header.dart';

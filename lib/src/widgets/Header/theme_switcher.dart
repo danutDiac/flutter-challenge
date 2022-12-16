@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_challenge/src/theme/themeManager.dart';
-import 'package:flutter_challenge/src/widgets/Header/darkButtonDetails.dart';
-import 'package:flutter_challenge/src/widgets/Header/lightButtonDetails.dart';
+import 'package:flutter_challenge/src/theme/theme_manager.dart';
+import 'package:flutter_challenge/src/widgets/Header/dark_button_details.dart';
+import 'package:flutter_challenge/src/widgets/Header/light_button_details.dart';
 import 'package:provider/provider.dart';
 
 class ThemeSwitcher extends StatefulWidget {
