@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/src/services/api_service.dart';
+import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/theme/themeManager.dart';
 
 import 'src/widgets/Header/header.dart';
@@ -34,7 +36,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  late GithubUser response;
+  bool userNotFound = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
+  void _getData() async {
+    try {
+      response = await ApiService().getGithubUser('octocat');
+    } on UserNotFoundException catch (e) {
+      userNotFound = true;
+    } catch (err) {
+      print(err);
+    }
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -43,7 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
