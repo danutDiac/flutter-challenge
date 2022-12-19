@@ -14,35 +14,46 @@ class SearchBar extends StatelessWidget {
       child: Row(
         children: [
           Flexible(
-            child: TextFormField(
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(0),
-                prefixIcon: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  child: Icon(
-                    CustomIcons.search,
-                    color: color_constants.primary02Color,
-                    size: 20,
-                  ),
-                ),
-                suffixIcon: const SearchButton(),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: const BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
-                  ),
-                ),
-                fillColor: Colors.white,
-                filled: true,
-                hintText: 'Search GitHub username',
+            child: Container(
+              decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: color_constants.boxShadow,
+                      blurRadius: 30,
+                      offset: Offset(0, 16),
+                      spreadRadius: -10),
+                ],
               ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Enter a name now!';
-                }
-                return null;
-              },
+              child: TextFormField(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(0),
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Icon(
+                      CustomIcons.search,
+                      color: color_constants.primary02Color,
+                      size: 20,
+                    ),
+                  ),
+                  suffixIcon: const SearchButton(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  hintText: 'Search GitHub username',
+                ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter a name now!';
+                  }
+                  return null;
+                },
+              ),
             ),
           ),
         ],

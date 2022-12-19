@@ -9,3 +9,4 @@ const Color neutral02Color = Color(0xff222731);
 const Color neutral03Color = Color(0xff1E2A47);
 const Color lightGrey = Color(0xffF6F8FF);
 const Color darkGrey = Color(0xff141D2F);
+const Color boxShadow = Color.fromRGBO(70, 96, 187, 0.198567);
