@@ -27,13 +27,16 @@ class UserDetailsState extends State<UserDetails> {
               child: Row(
                 children: [
                   const Padding(
-                      padding: EdgeInsets.only(right: 19),
-                      child: SizedBox(
-                          height: 70,
-                          width: 70,
-                          child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  "https://avatars.githubusercontent.com/u/102725250?s=400&v=4")))),
+                    padding: EdgeInsets.only(right: 19),
+                    child: SizedBox(
+                      height: 70,
+                      width: 70,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://avatars.githubusercontent.com/u/102725250?s=400&v=4"),
+                      ),
+                    ),
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -59,7 +62,7 @@ class UserDetailsState extends State<UserDetails> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 19),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: color_constants.lightGrey),
+                  color: Theme.of(context).backgroundColor),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -115,11 +118,11 @@ class UserDetailsState extends State<UserDetails> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Row(children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 19),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 19),
                     child: Icon(
                       CustomIcons2.location,
-                      color: color_constants.tertiaryColor,
+                      color: Theme.of(context).iconTheme.color,
                       size: 20,
                     ),
                   ),
@@ -133,11 +136,11 @@ class UserDetailsState extends State<UserDetails> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Row(children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 19.25),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 19.25),
                     child: Icon(
                       CustomIcons2.link,
-                      color: color_constants.tertiaryColor,
+                      color: Theme.of(context).iconTheme.color,
                       size: 20,
                     ),
                   ),
@@ -148,11 +151,11 @@ class UserDetailsState extends State<UserDetails> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Row(children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 19.25),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 19.25),
                     child: Icon(
                       CustomIcons2.twitter,
-                      color: color_constants.tertiaryColor,
+                      color: Theme.of(context).iconTheme.color,
                       size: 20,
                     ),
                   ),
@@ -163,11 +166,11 @@ class UserDetailsState extends State<UserDetails> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Row(children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 19.25),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 19.25),
                     child: Icon(
                       CustomIcons2.officeBuilding,
-                      color: color_constants.tertiaryColor,
+                      color: Theme.of(context).iconTheme.color,
                       size: 20,
                     ),
                   ),
