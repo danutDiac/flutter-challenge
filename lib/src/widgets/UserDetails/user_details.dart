@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../assets/icons2/custom_icons_icons.dart';
 
@@ -113,90 +114,22 @@ class UserDetailsState extends State<UserDetails> {
                 ],
               ),
             ),
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              Opacity(
-                opacity: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 19),
-                      child: Icon(
-                        CustomIcons2.location,
-                        color: Theme.of(context).iconTheme.color,
-                        size: 20,
-                      ),
-                    ),
-                    Text(
-                      'San Francisco',
-                      style: Theme.of(context).textTheme.headline4,
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-                ),
-              ),
-              Opacity(
-                opacity: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 19.25),
-                      child: Icon(
-                        CustomIcons2.link,
-                        color: Theme.of(context).iconTheme.color,
-                        size: 20,
-                      ),
-                    ),
-                    Text('https://github.blog',
-                        style: Theme.of(context).textTheme.headline4),
-                  ]),
-                ),
-              ),
-              Opacity(
-                opacity: 0.5,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 19.25),
-                      child: Icon(
-                        CustomIcons2.twitter,
-                        color: Theme.of(context).iconTheme.color,
-                        size: 20,
-                      ),
-                    ),
-                    Text('Not available',
-                        style: Theme.of(context).textTheme.headline4),
-                  ]),
-                ),
-              ),
-              Opacity(
-                  opacity: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: Row(children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 19.25),
-                        child: Icon(
-                          CustomIcons2.officeBuilding,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 20,
-                        ),
-                      ),
-                      TextButton(
-                          style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: EdgeInsets.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          onPressed: () async =>
-                              await launchUrl(Uri.parse('https://github.blog')),
-                          child: Text('@github',
-                              style: Theme.of(context).textTheme.headline4)),
-                    ]),
-                  )),
-            ])
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: const [
+                  UserContact(
+                      icon: CustomIcons2.location, title: 'San Francisco'),
+                  UserContact(
+                      url: 'https://github.blog',
+                      title: 'https://github.blog',
+                      icon: CustomIcons2.link),
+                  UserContact(icon: CustomIcons2.twitter, isAvailable: false),
+                  UserContact(
+                    url: 'https://gitlab.com/octocat',
+                    title: '@octocat',
+                    icon: CustomIcons2.officeBuilding,
+                  )
+                ])
           ],
         ));
   }
