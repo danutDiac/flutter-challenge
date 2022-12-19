@@ -23,9 +23,7 @@ class ThemeManager with ChangeNotifier {
           fontWeight: FontWeight.normal,
           color: color_constants.primary01Color),
       headline4: TextStyle(
-          fontSize: 13.0,
-          fontWeight: FontWeight.normal,
-          color: color_constants.tertiaryColor),
+          fontSize: 13.0, fontWeight: FontWeight.normal, color: Colors.white),
       headline5: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.normal,

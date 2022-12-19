@@ -25,28 +25,30 @@ class SearchBar extends StatelessWidget {
                 ],
               ),
               child: TextFormField(
+                style: Theme.of(context).textTheme.headline4,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(0),
-                  prefixIcon: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                    child: Icon(
-                      CustomIcons.search,
-                      color: color_constants.primary02Color,
-                      size: 20,
+                    contentPadding: const EdgeInsets.all(0),
+                    prefixIcon: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                      child: Icon(
+                        CustomIcons.search,
+                        color: color_constants.primary02Color,
+                        size: 20,
+                      ),
                     ),
-                  ),
-                  suffixIcon: const SearchButton(),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
+                    suffixIcon: const SearchButton(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
                     ),
-                  ),
-                  fillColor: Colors.white,
-                  filled: true,
-                  hintText: 'Search GitHub username',
-                ),
+                    fillColor: Theme.of(context).scaffoldBackgroundColor,
+                    filled: true,
+                    hintText: 'Search GitHub username',
+                    hintStyle: Theme.of(context).textTheme.headline4),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return 'Enter a name now!';
