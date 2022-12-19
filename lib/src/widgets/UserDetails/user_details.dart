@@ -22,7 +22,7 @@ class UserDetailsState extends State<UserDetails> {
                 Container(
                     height: 122,
                     padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: color_constants.lightGrey),
                     child: Image.network(
@@ -32,8 +32,8 @@ class UserDetailsState extends State<UserDetails> {
                   children: [
                     Text('datTa',
                         style: Theme.of(context).textTheme.displayLarge),
-                    Text('datqwdqwda'),
-                    Text('dfhwieufh')
+                    const Text('datqwdqwda'),
+                    const Text('dfhwieufh')
                   ],
                 )
               ],

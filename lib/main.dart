@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/api_service.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/theme/theme_manager.dart';
-import 'package:flutter_challenge/src/widgets/SearchBar/searchBar.dart';
 import 'package:flutter_challenge/src/widgets/UserDetails/user_details.dart';
+import 'package:flutter_challenge/src/widgets/SearchBar/search_bar.dart';
 
 import 'src/widgets/Header/header.dart';
 import 'package:provider/provider.dart';

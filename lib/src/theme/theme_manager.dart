@@ -4,7 +4,7 @@ import 'color_codes.dart' as color_constants;
 class ThemeManager with ChangeNotifier {
   final darkTheme = ThemeData(
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: color_constants.primaryColor,
+      primary: color_constants.primary01Color,
       secondary: color_constants.secondaryColor,
       tertiary: color_constants.tertiaryColor,
     ),
@@ -21,7 +21,7 @@ class ThemeManager with ChangeNotifier {
       headline3: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
-          color: color_constants.primaryColor),
+          color: color_constants.primary01Color),
       headline4: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.normal,
@@ -41,7 +41,7 @@ class ThemeManager with ChangeNotifier {
 
   final lightTheme = ThemeData(
       colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: color_constants.primaryColor,
+        primary: color_constants.primary01Color,
         secondary: color_constants.secondaryColor,
         tertiary: color_constants.tertiaryColor,
       ),
@@ -60,7 +60,7 @@ class ThemeManager with ChangeNotifier {
         headline3: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.normal,
-            color: color_constants.primaryColor),
+            color: color_constants.primary01Color),
         headline4: TextStyle(
             fontSize: 13.0,
             fontWeight: FontWeight.normal,
