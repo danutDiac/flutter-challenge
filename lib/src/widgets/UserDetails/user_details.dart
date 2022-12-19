@@ -12,31 +12,39 @@ class UserDetailsState extends State<UserDetails> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: const EdgeInsets.only(top: 10, bottom: 16),
+        padding:
+            const EdgeInsets.only(top: 32, bottom: 48, left: 24, right: 24),
         decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.circular(24)),
         child: Column(
           children: [
-            Row(
-              children: [
-                Container(
-                    height: 122,
-                    padding: const EdgeInsets.all(15),
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: color_constants.lightGrey),
-                    child: Image.network(
-                        "https://qph.cf2.quoracdn.net/main-qimg-b2ffb3a32c2e07826c887815599de6f3")),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('datTa',
-                        style: Theme.of(context).textTheme.displayLarge),
-                    const Text('datqwdqwda'),
-                    const Text('dfhwieufh')
-                  ],
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30),
+              child: Row(
+                children: [
+                  const Padding(
+                      padding: EdgeInsets.only(right: 19),
+                      child: SizedBox(
+                          height: 70,
+                          width: 70,
+                          child: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  "https://avatars.githubusercontent.com/u/102725250?s=400&v=4")))),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('The Octocat',
+                          style: Theme.of(context).textTheme.headline1),
+                      Text('@octocat',
+                          style: Theme.of(context).textTheme.headline6),
+                      Text('Joined 25 Jan 2022',
+                          style: Theme.of(context).textTheme.headline5)
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ));
