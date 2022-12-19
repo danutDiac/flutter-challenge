@@ -19,9 +19,9 @@ class ThemeManager with ChangeNotifier {
           fontWeight: FontWeight.bold,
           color: color_constants.neutral01Color),
       headline3: TextStyle(
-          fontSize: 16.0,
+          fontSize: 11.0,
           fontWeight: FontWeight.normal,
-          color: color_constants.primary01Color),
+          color: color_constants.tertiaryColor),
       headline4: TextStyle(
           fontSize: 13.0, fontWeight: FontWeight.normal, color: Colors.white),
       headline5: TextStyle(
@@ -38,6 +38,11 @@ class ThemeManager with ChangeNotifier {
         fontWeight: FontWeight.normal,
         color: color_constants.neutral01Color,
       ),
+      bodyText2: TextStyle(
+          fontSize: 13.0,
+          fontWeight: FontWeight.normal,
+          color: color_constants.tertiaryColor,
+          height: 2.5),
       headlineLarge: TextStyle(
         fontSize: 26.0,
         fontWeight: FontWeight.bold,
@@ -65,9 +70,9 @@ class ThemeManager with ChangeNotifier {
             fontWeight: FontWeight.bold,
             color: color_constants.neutral01Color),
         headline3: TextStyle(
-            fontSize: 16.0,
+            fontSize: 11.0,
             fontWeight: FontWeight.normal,
-            color: color_constants.primary01Color),
+            color: color_constants.tertiaryColor),
         headline4: TextStyle(
             fontSize: 13.0,
             fontWeight: FontWeight.normal,
@@ -86,6 +91,11 @@ class ThemeManager with ChangeNotifier {
           fontWeight: FontWeight.normal,
           color: color_constants.neutral01Color,
         ),
+        bodyText2: TextStyle(
+            fontSize: 13.0,
+            fontWeight: FontWeight.normal,
+            color: color_constants.tertiaryColor,
+            height: 2.5),
         headlineLarge: TextStyle(
           fontSize: 26.0,
           fontWeight: FontWeight.bold,
