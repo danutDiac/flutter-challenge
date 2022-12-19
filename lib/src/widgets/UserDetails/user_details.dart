@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../assets/icons/custom_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../assets/icons2/custom_icons_icons.dart';
-import '../../theme/color_codes.dart' as color_constants;
 
 class UserDetails extends StatefulWidget {
   const UserDetails({super.key});
@@ -115,68 +114,88 @@ class UserDetailsState extends State<UserDetails> {
               ),
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 19),
-                    child: Icon(
-                      CustomIcons2.location,
-                      color: Theme.of(context).iconTheme.color,
-                      size: 20,
+              Opacity(
+                opacity: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 19),
+                      child: Icon(
+                        CustomIcons2.location,
+                        color: Theme.of(context).iconTheme.color,
+                        size: 20,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'San Francisco',
-                    style: Theme.of(context).textTheme.headline4,
-                    textAlign: TextAlign.center,
-                  )
-                ]),
+                    Text(
+                      'San Francisco',
+                      style: Theme.of(context).textTheme.headline4,
+                      textAlign: TextAlign.center,
+                    )
+                  ]),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 19.25),
-                    child: Icon(
-                      CustomIcons2.link,
-                      color: Theme.of(context).iconTheme.color,
-                      size: 20,
+              Opacity(
+                opacity: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 19.25),
+                      child: Icon(
+                        CustomIcons2.link,
+                        color: Theme.of(context).iconTheme.color,
+                        size: 20,
+                      ),
                     ),
-                  ),
-                  Text('https://github.blog',
-                      style: Theme.of(context).textTheme.headline4),
-                ]),
+                    Text('https://github.blog',
+                        style: Theme.of(context).textTheme.headline4),
+                  ]),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 19.25),
-                    child: Icon(
-                      CustomIcons2.twitter,
-                      color: Theme.of(context).iconTheme.color,
-                      size: 20,
+              Opacity(
+                opacity: 0.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 19.25),
+                      child: Icon(
+                        CustomIcons2.twitter,
+                        color: Theme.of(context).iconTheme.color,
+                        size: 20,
+                      ),
                     ),
-                  ),
-                  Text('Not available',
-                      style: Theme.of(context).textTheme.headline4),
-                ]),
+                    Text('Not available',
+                        style: Theme.of(context).textTheme.headline4),
+                  ]),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 19.25),
-                    child: Icon(
-                      CustomIcons2.officeBuilding,
-                      color: Theme.of(context).iconTheme.color,
-                      size: 20,
-                    ),
-                  ),
-                  Text('@github', style: Theme.of(context).textTheme.headline4),
-                ]),
-              )
+              Opacity(
+                  opacity: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: Row(children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 19.25),
+                        child: Icon(
+                          CustomIcons2.officeBuilding,
+                          color: Theme.of(context).iconTheme.color,
+                          size: 20,
+                        ),
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: EdgeInsets.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          onPressed: () async =>
+                              await launchUrl(Uri.parse('https://github.blog')),
+                          child: Text('@github',
+                              style: Theme.of(context).textTheme.headline4)),
+                    ]),
+                  )),
             ])
           ],
         ));

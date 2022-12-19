@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../../theme/color_codes.dart' as color_constants;
+import '../../theme/theme_manager.dart';
 
 class SearchButton extends StatelessWidget {
   const SearchButton({super.key});
