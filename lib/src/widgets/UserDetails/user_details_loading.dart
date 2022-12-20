@@ -25,18 +25,20 @@ class _UserDetailsLoading extends State<UserDetailsLoading>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (_, child) {
-        return Transform.rotate(
-          angle: _controller.value * 2 * math.pi,
-          child: child,
-        );
-      },
-      child: const Icon(
-        Spinner.spin5,
-        color: color_constants.primary02Color,
-        size: 30,
+    return Expanded(
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (_, child) {
+          return Transform.rotate(
+            angle: _controller.value * 2 * math.pi,
+            child: child,
+          );
+        },
+        child: const Icon(
+          Spinner.spin5,
+          color: color_constants.primary02Color,
+          size: 30,
+        ),
       ),
     );
   }
