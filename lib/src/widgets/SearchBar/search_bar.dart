@@ -7,8 +7,14 @@ import '../../theme/color_codes.dart' as color_constants;
 import 'search_button.dart';
 
 class SearchBar extends StatefulWidget {
-  const SearchBar({super.key, required this.onSearch});
+  const SearchBar(
+      {super.key,
+      required this.onSearch,
+      required this.resetNoResults,
+      this.noResults = false});
   final Function(String text) onSearch;
+  final Function() resetNoResults;
+  final bool noResults;
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -37,10 +43,13 @@ class _SearchBarState extends State<SearchBar> {
               ),
               child: TextFormField(
                 style: Theme.of(context).textTheme.headline4,
-                onChanged: (value) => setState(() {
-                  _isSearchDisabled = value.isEmpty;
-                  text = value;
-                }),
+                onChanged: (value) => {
+                  setState(() {
+                    _isSearchDisabled = value.isEmpty;
+                    text = value;
+                  }),
+                  widget.resetNoResults()
+                },
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(0),
                     prefixIcon: const Padding(
@@ -51,6 +60,11 @@ class _SearchBarState extends State<SearchBar> {
                         color: color_constants.primary02Color,
                         size: 20,
                       ),
+                    ),
+                    suffixText: widget.noResults ? 'No results' : null,
+                    suffixStyle: const TextStyle(
+                      color: color_constants.errorColor,
+                      fontWeight: FontWeight.bold,
                     ),
                     suffixIcon: SearchButton(
                       isDisabled: _isSearchDisabled,

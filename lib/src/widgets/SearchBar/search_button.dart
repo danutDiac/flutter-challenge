@@ -12,6 +12,7 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(7),
+      padding: const EdgeInsets.only(left: 12),
       child: TextButton(
         onPressed: isDisabled ? null : onSearch,
         style: ButtonStyle(

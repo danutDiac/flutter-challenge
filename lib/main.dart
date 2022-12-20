@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/api_service.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
@@ -52,12 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
       widget.githubUser = await ApiService().getGithubUser(user);
       setState(() {});
     } on UserNotFoundException catch (e) {
+      log('got to error');
       userNotFound = true;
     } catch (err) {
       print(err);
     } finally {
       setState(() {});
     }
+  }
+
+  _resetNoResults() {
+    userNotFound = false;
+    setState(() {});
   }
 
   @override
@@ -76,6 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
               const Header(),
               SearchBar(
                 onSearch: (text) => _getData(text),
+                noResults: userNotFound,
+                resetNoResults: _resetNoResults,
               ),
               UserDetails(
                 user: widget.githubUser,
