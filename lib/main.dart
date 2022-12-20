@@ -24,21 +24,20 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         title: 'Flutter Challenge',
         theme: theme.getTheme(),
-        home: const MyHomePage(),
+        home: MyHomePage(),
       );
     });
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
+  MyHomePage({super.key, this.githubUser});
+  GithubUser? githubUser;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late GithubUser githubUser;
   bool userNotFound = false;
 
   @override
@@ -49,7 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _getData(String user) async {
     try {
-      githubUser = await ApiService().getGithubUser(user);
+      widget.githubUser = await ApiService().getGithubUser(user);
+      setState(() {});
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
@@ -73,7 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
               SearchBar(
                 onSearch: (text) => _getData(text),
               ),
-              const UserDetails(),
+              UserDetails(
+                user: widget.githubUser,
+              ),
             ],
           ),
         )),
