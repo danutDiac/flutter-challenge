@@ -33,14 +33,15 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, this.githubUser});
-  GithubUser? githubUser;
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   bool userNotFound = false;
+  GithubUser? githubUser;
 
   @override
   void initState() {
@@ -51,8 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _getData(String user) async {
     try {
       userNotFound = false;
-      widget.githubUser = await ApiService().getGithubUser(user);
-      setState(() {});
+      githubUser = await ApiService().getGithubUser(user);
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 resetNoResults: _resetNoResults,
               ),
               UserDetails(
-                user: widget.githubUser,
+                user: githubUser,
                 userNotFound: userNotFound,
               ),
             ],
