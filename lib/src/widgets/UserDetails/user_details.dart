@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
 
-import '../../assets/icons2/custom_icons_icons.dart';
 import '../reusable/single_row_table_with_background.dart';
+import '../../assets/icons/git_hub_user_contacts.dart';
+import '../../theme/color_codes.dart' as color_constants;
 
 class UserDetails extends StatefulWidget {
   const UserDetails({super.key, required this.user});
@@ -32,7 +33,14 @@ class UserDetailsState extends State<UserDetails> {
             const EdgeInsets.only(top: 32, bottom: 48, left: 24, right: 24),
         decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
-            borderRadius: BorderRadius.circular(24)),
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: const [
+              BoxShadow(
+                  color: color_constants.boxShadow,
+                  blurRadius: 30,
+                  offset: Offset(0, 16),
+                  spreadRadius: -10),
+            ]),
         child: Column(
           children: [
             Padding(
@@ -72,17 +80,20 @@ class UserDetailsState extends State<UserDetails> {
               elements: tableElements,
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              UserContact(icon: CustomIcons2.location, title: user.location),
               UserContact(
-                  url: user.blog, title: user.blog, icon: CustomIcons2.link),
+                  icon: GitHubUserContacts.location, title: user.location),
               UserContact(
-                icon: CustomIcons2.twitter,
+                  url: user.blog,
+                  title: user.blog,
+                  icon: GitHubUserContacts.link),
+              UserContact(
+                icon: GitHubUserContacts.twitter,
                 title: user.twitterUsername,
               ),
               UserContact(
                 url: 'https://github.com/${user.company?.substring(1)}',
                 title: user.company != null ? '@${user.company}' : null,
-                icon: CustomIcons2.officeBuilding,
+                icon: GitHubUserContacts.officeBuilding,
               )
             ])
           ],

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class CustomIcons {
-  CustomIcons._();
+class Search {
+  Search._();
 
   static const String _search = 'Search';
   static const String _twitter = 'Twitter';

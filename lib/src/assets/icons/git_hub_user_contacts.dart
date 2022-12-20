@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class CustomIcons2 {
-  CustomIcons2._();
+class GitHubUserContacts {
+  GitHubUserContacts._();
 
   static const _kFontFam = 'CustomIcons';
   static const String? _kFontPkg = null;
