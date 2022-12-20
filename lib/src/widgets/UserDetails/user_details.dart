@@ -20,6 +20,7 @@ class UserDetailsState extends State<UserDetails> {
     final user = widget.user;
 
     final String bioText = user.bio ?? 'This profile has no bio';
+    final bool companyHasTag = user.company?.contains('@') ?? false;
 
     final List<TableElement> tableElements = [
       TableElement(rowName: 'Repos', rowValue: user.publicRepos.toString()),
@@ -91,8 +92,10 @@ class UserDetailsState extends State<UserDetails> {
                 title: user.twitterUsername,
               ),
               UserContact(
-                url: 'https://github.com/${user.company?.substring(1)}',
-                title: user.company != null ? '@${user.company}' : null,
+                url: companyHasTag
+                    ? 'https://github.com/${user.company?.substring(1)}'
+                    : null,
+                title: user.company != null ? '${user.company}' : null,
                 icon: GitHubUserContacts.officeBuilding,
               )
             ])
