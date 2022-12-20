@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.5
   http: 0.13.5
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   flutter_test:
@@ -83,9 +84,15 @@ flutter:
           style: italic
         - asset: fonts/SpaceMono-Bold.ttf
           weight: 700
+    - family: Search
+      fonts:
+        - asset: lib/src/assets/icons/search.ttf
+    - family: Twitter
+      fonts:
+        - asset: lib/src/assets/icons/twitter.ttf
     - family: CustomIcons
       fonts:
-        - asset: lib/src/assets/icons/custom-icons.ttf
+        - asset: lib/src/assets/icons2/CustomIcons.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
