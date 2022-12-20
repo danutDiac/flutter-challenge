@@ -38,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late GithubUser response;
+  late GithubUser githubUser;
   bool userNotFound = false;
 
   @override
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _getData(String user) async {
     try {
-      response = await ApiService().getGithubUser(user);
+      githubUser = await ApiService().getGithubUser(user);
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
