@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       )
     ];
 
-    if (githubUsr != null) {
+    if (githubUsr != null && !loading) {
       appChildren.add(UserDetails(user: githubUsr));
     }
     if (loading) {

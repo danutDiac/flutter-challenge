@@ -63,6 +63,7 @@ class _SearchBarState extends State<SearchBar> {
                     suffixStyle: const TextStyle(
                       color: color_constants.errorColor,
                       fontWeight: FontWeight.bold,
+                      height: 1,
                     ),
                     suffixIcon: SearchButton(
                       isDisabled: _isSearchDisabled,
