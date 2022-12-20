@@ -48,12 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _getData(String user) async {
     try {
+      userNotFound = false;
       widget.githubUser = await ApiService().getGithubUser(user);
       setState(() {});
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
       print(err);
+    } finally {
+      setState(() {});
     }
   }
 
@@ -76,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               UserDetails(
                 user: widget.githubUser,
+                userNotFound: userNotFound,
               ),
             ],
           ),
