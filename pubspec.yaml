@@ -88,15 +88,12 @@ flutter:
     - family: Search
       fonts:
         - asset: lib/src/assets/icons/search.ttf
-    - family: Twitter
+    - family: GitHubUserContacts
       fonts:
-        - asset: lib/src/assets/icons/twitter.ttf
-    - family: CustomIcons
-      fonts:
-        - asset: lib/src/assets/icons2/CustomIcons.ttf
+        - asset: lib/src/assets/icons/GitHubUserContacts.ttf
     - family: Spinner
       fonts:
-        - asset: lib/src/assets/icons2/Spinner.ttf
+        - asset: lib/src/assets/icons/Spinner.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

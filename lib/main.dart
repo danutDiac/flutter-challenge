@@ -93,19 +93,21 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-        ),
-        child: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: appChildren,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).backgroundColor,
           ),
-        )),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: appChildren,
+              ),
+            ),
+          ),
+        ),
       ),
-    ));
+    );
   }
 }

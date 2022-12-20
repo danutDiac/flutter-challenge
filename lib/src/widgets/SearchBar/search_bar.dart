@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../assets/icons/custom_icons.dart';
+import '../../assets/icons/search.dart';
 import '../../theme/color_codes.dart' as color_constants;
 import 'search_button.dart';
 
@@ -54,7 +54,7 @@ class _SearchBarState extends State<SearchBar> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                       child: Icon(
-                        CustomIcons.search,
+                        Search.search,
                         color: color_constants.primary02Color,
                         size: 20,
                       ),

@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
-import '../../assets/icons2/spinner_icons.dart';
+import '../../assets/icons/spinner_icons.dart';
 import '../../theme/color_codes.dart' as color_constants;
 
 class UserDetailsLoading extends StatefulWidget {

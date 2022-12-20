@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
 
-import '../../assets/icons2/custom_icons_icons.dart';
+import '../../assets/icons/git_hub_user_contacts.dart';
 import '../../theme/color_codes.dart' as color_constants;
 
 class UserDetails extends StatefulWidget {
@@ -127,17 +127,20 @@ class UserDetailsState extends State<UserDetails> {
               ),
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              UserContact(icon: CustomIcons2.location, title: user.location),
               UserContact(
-                  url: user.blog, title: user.blog, icon: CustomIcons2.link),
+                  icon: GitHubUserContacts.location, title: user.location),
               UserContact(
-                icon: CustomIcons2.twitter,
+                  url: user.blog,
+                  title: user.blog,
+                  icon: GitHubUserContacts.link),
+              UserContact(
+                icon: GitHubUserContacts.twitter,
                 title: user.twitterUsername,
               ),
               UserContact(
                 url: 'https://github.com/${user.company?.substring(1)}',
                 title: user.company != null ? '@${user.company}' : null,
-                icon: CustomIcons2.officeBuilding,
+                icon: GitHubUserContacts.officeBuilding,
               )
             ])
           ],
