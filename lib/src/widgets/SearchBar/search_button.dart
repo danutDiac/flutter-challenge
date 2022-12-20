@@ -16,15 +16,8 @@ class SearchButton extends StatelessWidget {
         onPressed: isDisabled ? null : onSearch,
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-                if (isDisabled) {
-                  return color_constants.lightBlue;
-                }
-                if (states.contains(MaterialState.pressed)) {
-                  return color_constants.lightBlue;
-                }
-                return color_constants.primary02Color;
-              },
+              (Set<MaterialState> states) =>
+                  getBackgroundColor(states, isDisabled),
             ),
             padding: MaterialStateProperty.all(const EdgeInsets.only(
                 top: 12.5, bottom: 12.5, left: 18, right: 18)),
@@ -41,4 +34,15 @@ class SearchButton extends StatelessWidget {
       ),
     );
   }
+}
+
+Color getBackgroundColor(Set<MaterialState> states, bool isDisabled) {
+  if (isDisabled) {
+    return color_constants.lightBlue;
+  }
+
+  if (states.contains(MaterialState.pressed)) {
+    return color_constants.lightBlue;
+  }
+  return color_constants.primary02Color;
 }

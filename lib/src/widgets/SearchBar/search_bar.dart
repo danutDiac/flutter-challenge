@@ -53,7 +53,6 @@ class _SearchBarState extends State<SearchBar> {
                       ),
                     ),
                     suffixIcon: SearchButton(
-                      key: UniqueKey(),
                       isDisabled: _isSearchDisabled,
                       onSearch: () => widget.onSearch(text),
                     ),

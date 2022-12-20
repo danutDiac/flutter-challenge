@@ -60,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: SingleChildScrollView(
+      child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
         ),
@@ -80,6 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         )),
       ),
-    );
+    ));
   }
 }
