@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class GithubUser {
   final String? name;
   final String login;
@@ -9,8 +11,9 @@ class GithubUser {
   final String? blog;
   final String? twitterUsername;
   final String? company;
-  final DateTime createdAt;
+  final String createdAt;
   final String avatarUrl;
+  final String? bio;
 
   const GithubUser(
       {this.name = '',
@@ -24,9 +27,12 @@ class GithubUser {
       this.blog = '',
       this.twitterUsername = '',
       this.company = '',
-      required this.createdAt});
+      required this.createdAt,
+      this.bio = ''});
 
   factory GithubUser.fromJSON(Map<String, dynamic> json) {
+    final DateTime date = DateTime.parse(json["created_at"]);
+
     return GithubUser(
         name: json["name"],
         login: json["login"],
@@ -36,9 +42,10 @@ class GithubUser {
         following: json["following"],
         location: json["location"],
         avatarUrl: json["avatar_url"],
-        createdAt: DateTime.parse(json["created_at"]),
-        blog: json["blog"],
+        createdAt: DateFormat('dd MMMM yyyy').format(date),
+        blog: json["blog"] == '' ? null : json["blog"],
         twitterUsername: json["twitter_username"],
-        company: json["company"]);
+        company: json["company"],
+        bio: json["bio"]);
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 import '../../assets/icons2/custom_icons_icons.dart';
 
 class UserDetails extends StatefulWidget {
-  const UserDetails({super.key});
+  const UserDetails({super.key, required this.user});
+  final GithubUser? user;
 
   @override
   State<UserDetails> createState() => UserDetailsState();
@@ -13,6 +15,16 @@ class UserDetails extends StatefulWidget {
 class UserDetailsState extends State<UserDetails> {
   @override
   Widget build(BuildContext context) {
+    final user = widget.user;
+
+    if (user == null) {
+      return Container(
+        child: Text('No user found!'),
+      );
+    }
+
+    final String bioText = user.bio ?? 'This profile has no bio';
+
     return Container(
         margin: const EdgeInsets.only(top: 10, bottom: 16),
         padding:
@@ -26,25 +38,24 @@ class UserDetailsState extends State<UserDetails> {
               padding: const EdgeInsets.only(bottom: 30),
               child: Row(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 19),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 19),
                     child: SizedBox(
                       height: 70,
                       width: 70,
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://avatars.githubusercontent.com/u/102725250?s=400&v=4"),
+                        backgroundImage: NetworkImage(user.avatarUrl),
                       ),
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('The Octocat',
+                      Text(user.name ?? user.login,
                           style: Theme.of(context).textTheme.headline1),
-                      Text('@octocat',
+                      Text('@${user.login}',
                           style: Theme.of(context).textTheme.headline6),
-                      Text('Joined 25 Jan 2022',
+                      Text('Joined ${user.createdAt}',
                           style: Theme.of(context).textTheme.headline5)
                     ],
                   )
@@ -53,9 +64,8 @@ class UserDetailsState extends State<UserDetails> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 23),
-              child: Text(
-                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.',
-                  style: Theme.of(context).textTheme.bodyText2),
+              child:
+                  Text(bioText, style: Theme.of(context).textTheme.bodyText2),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 24),
@@ -76,7 +86,7 @@ class UserDetailsState extends State<UserDetails> {
                         ),
                       ),
                       Text(
-                        '8',
+                        user.publicRepos.toString(),
                         style: Theme.of(context).textTheme.headline1,
                       )
                     ],
@@ -91,7 +101,7 @@ class UserDetailsState extends State<UserDetails> {
                         ),
                       ),
                       Text(
-                        '3839',
+                        user.followers.toString(),
                         style: Theme.of(context).textTheme.headline1,
                       )
                     ],
@@ -106,7 +116,7 @@ class UserDetailsState extends State<UserDetails> {
                         ),
                       ),
                       Text(
-                        '9',
+                        user.following.toString(),
                         style: Theme.of(context).textTheme.headline1,
                       )
                     ],
@@ -114,22 +124,20 @@ class UserDetailsState extends State<UserDetails> {
                 ],
               ),
             ),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: const [
-                  UserContact(
-                      icon: CustomIcons2.location, title: 'San Francisco'),
-                  UserContact(
-                      url: 'https://github.blog',
-                      title: 'https://github.blog',
-                      icon: CustomIcons2.link),
-                  UserContact(icon: CustomIcons2.twitter, isAvailable: false),
-                  UserContact(
-                    url: 'https://gitlab.com/octocat',
-                    title: '@octocat',
-                    icon: CustomIcons2.officeBuilding,
-                  )
-                ])
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              UserContact(icon: CustomIcons2.location, title: user.location),
+              UserContact(
+                  url: user.blog, title: user.blog, icon: CustomIcons2.link),
+              UserContact(
+                icon: CustomIcons2.twitter,
+                title: user.twitterUsername,
+              ),
+              UserContact(
+                url: 'https://github.com/${user.company?.substring(1)}',
+                title: user.company != null ? '@${user.company}' : null,
+                icon: CustomIcons2.officeBuilding,
+              )
+            ])
           ],
         ));
   }
