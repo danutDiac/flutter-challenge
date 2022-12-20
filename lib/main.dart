@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/api_service.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
@@ -9,6 +7,8 @@ import 'package:flutter_challenge/src/widgets/SearchBar/search_bar.dart';
 
 import 'src/widgets/Header/header.dart';
 import 'package:provider/provider.dart';
+
+import 'src/widgets/UserDetails/user_details_loading.dart';
 
 void main() {
   runApp(ChangeNotifierProvider<ThemeManager>(
@@ -41,6 +41,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool userNotFound = false;
+  bool loading = false;
   GithubUser? githubUser;
 
   @override
@@ -52,13 +53,18 @@ class _MyHomePageState extends State<MyHomePage> {
   _getData(String user) async {
     try {
       userNotFound = false;
+      setState(() {
+        loading = true;
+      });
       githubUser = await ApiService().getGithubUser(user);
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
       print(err);
     } finally {
-      setState(() {});
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -80,10 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     if (githubUsr != null) {
-      appChildren.add(UserDetails(
-        user: githubUsr,
-      ));
+      appChildren.add(UserDetails(user: githubUsr));
     }
+    if (loading) {
+      appChildren.add(const UserDetailsLoading());
+    }
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(

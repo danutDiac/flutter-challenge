@@ -94,6 +94,9 @@ flutter:
     - family: CustomIcons
       fonts:
         - asset: lib/src/assets/icons2/CustomIcons.ttf
+    - family: Spinner
+      fonts:
+        - asset: lib/src/assets/icons2/Spinner.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
