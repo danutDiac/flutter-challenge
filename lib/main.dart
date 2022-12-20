@@ -44,27 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _getData();
+    _getData('octocat');
   }
 
-  void _getData() async {
+  _getData(String user) async {
     try {
-      response = await ApiService().getGithubUser('octocat');
+      response = await ApiService().getGithubUser(user);
     } on UserNotFoundException catch (e) {
       userNotFound = true;
     } catch (err) {
       print(err);
     }
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
   }
 
   @override
@@ -78,10 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            children: const [
-              Header(),
-              SearchBar(),
-              UserDetails(),
+            children: [
+              const Header(),
+              SearchBar(
+                onSearch: (text) => _getData(text),
+              ),
+              const UserDetails(),
             ],
           ),
         )),
