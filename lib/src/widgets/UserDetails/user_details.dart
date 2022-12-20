@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/src/services/github_user.dart';
 import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
 
+import '../reusable/single_row_table_with_background.dart';
 import '../../assets/icons/git_hub_user_contacts.dart';
 import '../../theme/color_codes.dart' as color_constants;
 
@@ -19,6 +20,13 @@ class UserDetailsState extends State<UserDetails> {
     final user = widget.user;
 
     final String bioText = user.bio ?? 'This profile has no bio';
+    final bool companyHasTag = user.company?.contains('@') ?? false;
+
+    final List<TableElement> tableElements = [
+      TableElement(rowName: 'Repos', rowValue: user.publicRepos.toString()),
+      TableElement(rowName: 'Followers', rowValue: user.followers.toString()),
+      TableElement(rowName: 'Following', rowValue: user.following.toString()),
+    ];
 
     return Container(
         margin: const EdgeInsets.only(top: 10, bottom: 16),
@@ -69,62 +77,8 @@ class UserDetailsState extends State<UserDetails> {
               child:
                   Text(bioText, style: Theme.of(context).textTheme.bodyText2),
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 24),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 19),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).backgroundColor),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          'Repos',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                      ),
-                      Text(
-                        user.publicRepos.toString(),
-                        style: Theme.of(context).textTheme.headline1,
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          'Followers',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                      ),
-                      Text(
-                        user.followers.toString(),
-                        style: Theme.of(context).textTheme.headline1,
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          'Following',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                      ),
-                      Text(
-                        user.following.toString(),
-                        style: Theme.of(context).textTheme.headline1,
-                      )
-                    ],
-                  )
-                ],
-              ),
+            SingleRowTableWithBackground(
+              elements: tableElements,
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
               UserContact(
@@ -138,8 +92,10 @@ class UserDetailsState extends State<UserDetails> {
                 title: user.twitterUsername,
               ),
               UserContact(
-                url: 'https://github.com/${user.company?.substring(1)}',
-                title: user.company != null ? '@${user.company}' : null,
+                url: companyHasTag
+                    ? 'https://github.com/${user.company?.substring(1)}'
+                    : null,
+                title: user.company != null ? '${user.company}' : null,
                 icon: GitHubUserContacts.officeBuilding,
               )
             ])
