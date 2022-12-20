@@ -23,9 +23,12 @@ class _UserDetailsLoading extends State<UserDetailsLoading>
     super.dispose();
   }
 
+  final int headerHeight = 300;
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      height: MediaQuery.of(context).size.height - headerHeight,
       child: AnimatedBuilder(
         animation: _controller,
         builder: (_, child) {

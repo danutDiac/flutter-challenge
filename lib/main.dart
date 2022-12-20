@@ -86,32 +86,26 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     if (githubUsr != null && !loading) {
-      appChildren.add(UserDetails(user: githubUsr));
+      appChildren.add(SingleChildScrollView(
+        child: UserDetails(user: githubUsr),
+      ));
     }
     if (loading) {
       appChildren.add(const UserDetailsLoading());
     }
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-            ),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  children: appChildren,
-                ),
-              ),
-            ),
-          ),
-        ),
+        body: Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
       ),
-    );
+      child: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: ListView(
+              children: appChildren,
+            )),
+      ),
+    ));
   }
 }
