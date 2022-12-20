@@ -69,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final GithubUser? githubUsr = githubUser;
     final List<Widget> appChildren = [
       const Header(),
       SearchBar(
@@ -78,10 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
       )
     ];
 
-    if (githubUser != null) {
+    if (githubUsr != null) {
       appChildren.add(UserDetails(
-        user: githubUser,
-        userNotFound: userNotFound,
+        user: githubUsr,
       ));
     }
     return Scaffold(

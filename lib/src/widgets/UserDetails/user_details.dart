@@ -5,10 +5,8 @@ import 'package:flutter_challenge/src/widgets/UserDetails/user_contact.dart';
 import '../../assets/icons2/custom_icons_icons.dart';
 
 class UserDetails extends StatefulWidget {
-  const UserDetails(
-      {super.key, required this.user, required this.userNotFound});
-  final GithubUser? user;
-  final bool userNotFound;
+  const UserDetails({super.key, required this.user});
+  final GithubUser user;
 
   @override
   State<UserDetails> createState() => UserDetailsState();
@@ -18,18 +16,6 @@ class UserDetailsState extends State<UserDetails> {
   @override
   Widget build(BuildContext context) {
     final user = widget.user;
-
-    if (widget.userNotFound == true) {
-      return Container(
-        child: Text('No user found!'),
-      );
-    }
-
-    if (user == null) {
-      return Container(
-        child: Text('No user found!'),
-      );
-    }
 
     final String bioText = user.bio ?? 'This profile has no bio';
 
