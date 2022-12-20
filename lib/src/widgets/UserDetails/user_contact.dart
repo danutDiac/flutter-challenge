@@ -3,17 +3,16 @@ import 'package:url_launcher/url_launcher.dart';
 
 class UserContact extends StatelessWidget {
   final IconData icon;
-  final String title;
-  final String url;
-  final bool isAvailable;
+  final String? title;
+  final String? url;
+  bool isAvailable = true;
 
-  const UserContact(
-      {Key? key,
-      required this.icon,
-      this.title = '',
-      this.url = '',
-      this.isAvailable = true})
-      : super(key: key);
+  UserContact({Key? key, required this.icon, this.title = '', this.url = ''})
+      : super(key: key) {
+    if (title == null) {
+      isAvailable = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +36,9 @@ class UserContact extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-                    onPressed: () async => await launchUrl(Uri.parse(url)),
-                    child: Text(title,
+                    onPressed: () async =>
+                        await launchUrl(Uri.parse(url ?? '')),
+                    child: Text(title ?? '',
                         style: Theme.of(context).textTheme.headline4))
                 : Text('Not available',
                     style: Theme.of(context).textTheme.headline4)
