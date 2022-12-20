@@ -58,7 +58,8 @@ class UserDetailsState extends State<UserDetails> {
                       ),
                     ),
                   ),
-                  Column(
+                  Flexible(
+                      child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(user.name ?? user.login,
@@ -68,7 +69,7 @@ class UserDetailsState extends State<UserDetails> {
                       Text('Joined ${user.createdAt}',
                           style: Theme.of(context).textTheme.headline5)
                     ],
-                  )
+                  ))
                 ],
               ),
             ),
