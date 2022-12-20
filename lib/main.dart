@@ -69,6 +69,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> appChildren = [
+      const Header(),
+      SearchBar(
+        onSearch: (text) => _getData(text),
+        noResults: userNotFound,
+        resetNoResults: _resetNoResults,
+      )
+    ];
+
+    if (githubUser != null) {
+      appChildren.add(UserDetails(
+        user: githubUser,
+        userNotFound: userNotFound,
+      ));
+    }
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -79,18 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            children: [
-              const Header(),
-              SearchBar(
-                onSearch: (text) => _getData(text),
-                noResults: userNotFound,
-                resetNoResults: _resetNoResults,
-              ),
-              UserDetails(
-                user: githubUser,
-                userNotFound: userNotFound,
-              ),
-            ],
+            children: appChildren,
           ),
         )),
       ),
