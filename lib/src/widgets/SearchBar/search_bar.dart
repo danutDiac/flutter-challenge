@@ -1,11 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../assets/icons/custom_icons.dart';
 import '../../theme/color_codes.dart' as color_constants;
 import 'search_button.dart';
 
-class SearchBar extends StatelessWidget {
+class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
+
+  @override
+  State<SearchBar> createState() => _SearchBarState();
+}
+
+class _SearchBarState extends State<SearchBar> {
+  bool _isSearchDisabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +35,9 @@ class SearchBar extends StatelessWidget {
               ),
               child: TextFormField(
                 style: Theme.of(context).textTheme.headline4,
+                onChanged: (value) => setState(() {
+                  _isSearchDisabled = value.isEmpty;
+                }),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(0),
                     prefixIcon: const Padding(
@@ -37,7 +49,8 @@ class SearchBar extends StatelessWidget {
                         size: 20,
                       ),
                     ),
-                    suffixIcon: const SearchButton(),
+                    suffixIcon: SearchButton(
+                        key: UniqueKey(), isDisabled: _isSearchDisabled),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(
