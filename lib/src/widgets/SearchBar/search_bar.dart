@@ -4,8 +4,16 @@ import '../../assets/icons/custom_icons.dart';
 import '../../theme/color_codes.dart' as color_constants;
 import 'search_button.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+class SearchBar extends StatefulWidget {
+  const SearchBar({super.key, required this.onSearch});
+  final Function(String text) onSearch;
+
+  @override
+  State<SearchBar> createState() => _SearchBarState();
+}
+
+class _SearchBarState extends State<SearchBar> {
+  String text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +43,9 @@ class SearchBar extends StatelessWidget {
                       size: 20,
                     ),
                   ),
-                  suffixIcon: const SearchButton(),
+                  suffixIcon: SearchButton(
+                    onSearch: () => widget.onSearch(text),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(
@@ -52,6 +62,11 @@ class SearchBar extends StatelessWidget {
                     return 'Enter a name now!';
                   }
                   return null;
+                },
+                onChanged: (value) => {
+                  setState(() {
+                    text = value;
+                  })
                 },
               ),
             ),
