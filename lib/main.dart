@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
       widget.githubUser = await ApiService().getGithubUser(user);
       setState(() {});
     } on UserNotFoundException catch (e) {
-      log('got to error');
       userNotFound = true;
     } catch (err) {
       print(err);
