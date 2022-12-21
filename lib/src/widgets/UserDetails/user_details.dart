@@ -29,7 +29,7 @@ class UserDetailsState extends State<UserDetails> {
     ];
 
     return Container(
-        margin: const EdgeInsets.only(top: 10, bottom: 16),
+        margin: const EdgeInsets.only(top: 10),
         padding:
             const EdgeInsets.only(top: 32, bottom: 48, left: 24, right: 24),
         decoration: BoxDecoration(

@@ -23,24 +23,23 @@ class _UserDetailsLoading extends State<UserDetailsLoading>
     super.dispose();
   }
 
-  final int headerHeight = 300;
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height - headerHeight,
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (_, child) {
-          return Transform.rotate(
-            angle: _controller.value * 2 * math.pi,
-            child: child,
-          );
-        },
-        child: const Icon(
-          Spinner.spin5,
-          color: color_constants.primary02Color,
-          size: 30,
+    return Expanded(
+      child: Center(
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (_, child) {
+            return Transform.rotate(
+              angle: _controller.value * 2 * math.pi,
+              child: child,
+            );
+          },
+          child: const Icon(
+            Spinner.spin5,
+            color: color_constants.primary02Color,
+            size: 30,
+          ),
         ),
       ),
     );

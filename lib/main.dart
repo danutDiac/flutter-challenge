@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         title: 'Flutter Challenge',
         theme: theme.getTheme(),
-        home: MyHomePage(),
+        home: const MyHomePage(),
       );
     });
   }
@@ -76,36 +76,51 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final GithubUser? githubUsr = githubUser;
-    final List<Widget> appChildren = [
-      const Header(),
-      SearchBar(
-        onSearch: (text) => _getData(text),
-        noResults: userNotFound,
-        resetNoResults: _resetNoResults,
-      )
-    ];
+    Widget userDetails = const SizedBox.shrink();
 
     if (githubUsr != null && !loading) {
-      appChildren.add(SingleChildScrollView(
-        child: UserDetails(user: githubUsr),
-      ));
+      userDetails = UserDetails(user: githubUsr);
     }
     if (loading) {
-      appChildren.add(const UserDetailsLoading());
+      userDetails = const UserDetailsLoading();
     }
 
     return Scaffold(
-        body: Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
+      body: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).backgroundColor,
+        ),
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight,
+                ),
+                child: IntrinsicHeight(
+                  child: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 24, right: 24, left: 24),
+                      child: Column(
+                        children: [
+                          const Header(),
+                          SearchBar(
+                            onSearch: (text) => _getData(text),
+                            noResults: userNotFound,
+                            resetNoResults: _resetNoResults,
+                          ),
+                          userDetails,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
-      child: SafeArea(
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: ListView(
-              children: appChildren,
-            )),
-      ),
-    ));
+    );
   }
 }
