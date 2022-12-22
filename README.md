@@ -20,7 +20,6 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
 Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
 - Search for GitHub users by their username
 - See relevant user information based on their search
 - Switch between light and dark themes
@@ -28,15 +27,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+| Android Light | Android Dark  | iOS Light     | iOS Dark      |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="https://user-images.githubusercontent.com/16261042/209156378-3b793364-f899-4799-9bde-a0845f39b4bd.png" width="200px" /> | <img src="https://user-images.githubusercontent.com/16261042/209156524-4c90b26a-896c-47c4-86fc-41182b6d0c62.png" width="200px" /> | <img src="https://user-images.githubusercontent.com/16261042/209156640-edc36ae9-fa4c-4ce3-80d9-7dab61659785.png" width="200px" /> | <img src="https://user-images.githubusercontent.com/16261042/209156704-9fc25d0b-1d24-4e3a-b438-112ed7bc4321.png" width="200px" /> |
 
 ## My process
 
